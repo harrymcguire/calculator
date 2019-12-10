@@ -116,6 +116,24 @@ done.addEventListener('click', () => {
     if (equation.slice(-1) == "*" || equation.slice(-1) == "+" || equation.slice(-1) == "-" || equation.slice(-1) == "/") {
         return;
         }
+    for (i = 0; i < equation.length; i++) {    
+        if (equation.charAt(equation.indexOf('*', i) + 2) == 0){
+            equation = equation.slice(0, equation.indexOf('*', i) + 2) + equation.slice(equation.indexOf('*', i) + 3); 
+        }
+    
+        if (equation.charAt(equation.indexOf('+', i) + 2) == 0){
+            equation = equation.slice(0, equation.indexOf('+', i) + 2) + equation.slice(equation.indexOf('+', i) + 3); 
+        }
+    
+        if (equation.charAt(equation.indexOf('-', i) + 2) == 0){
+            equation = equation.slice(0, equation.indexOf('-', i) + 2) + equation.slice(equation.indexOf('-', i) + 3); 
+        }
+    
+        if (equation.charAt(equation.indexOf('/', i) + 2) == 0){
+            equation = equation.slice(0, equation.indexOf('/', i) + 2) + equation.slice(equation.indexOf('/', i) + 3); 
+        }
+    }
+    
     numberField.textContent = eval(equation);
     memory = numberField.textContent;
     equation = "";
